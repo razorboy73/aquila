@@ -23,5 +23,25 @@
         <?php wp_head();?>
     </head>
     <body <?php body_class()?>>
-    <?php wp_body_open(); ?>
-    <header>Header</header>
+    <?php
+    if (function_exists('wp_body_open')){
+    /**
+    * Check to allow for backwards compatability
+    */
+        wp_body_open();
+        
+    }
+    ?>
+
+    <div id="page" class="site">
+        <header id="masthead" class="site-header" role="banner">
+            <!--leave off the php -->
+            <?php get_template_part("template-parts/header/nav"); ?>
+            <!--if you have specific pages, use the page name as a second variable -->
+            <?php get_template_part("template-parts/content","post"); ?>
+
+        </header>
+        <div id="content" class="site-content">
+
+  
+    
