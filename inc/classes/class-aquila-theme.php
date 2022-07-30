@@ -27,39 +27,67 @@ class AQUILA_THEME {
 
     protected function __construct()
     {
-        
+       
+        Assets::get_instance();
+        Menus::get_instance();
         //load other classes
         $this->setup_hooks();
     }
 
     protected function setup_hooks(){
         //actions
-        add_action( 'wp_enqueue_scripts', [$this, "register_styles"]);
-        add_action( 'wp_enqueue_scripts', [$this, "register_scripts"]);
+    
+        add_action("after_setup_theme",[$this, "setup_theme"]);
 
     }
 
-    public function register_styles(){
+    public function setup_theme(){
 
-        //register styles
-        wp_register_style( 'style-css', get_stylesheet_uri(),[], filemtime(AQUILA_DIR_PATH.'/style.css'), 'all' );
-        wp_register_style( 'bootstrap-css', AQUILA_URI_PATH.'/assets/src/library/css/bootstrap.min.css',[], [], 'all' );
-         //enqueue styles
-        wp_enqueue_style("style-css");
-        wp_enqueue_style("bootstrap-css");
-    }
+        add_theme_support("title-tag");
+        add_theme_support( 'custom-logo', array(
+            'height'      => 100,
+            'width'       => 400,
+            'flex-height' => true,
+            'flex-width'  => true,
+            'header-text' => array( 'site-title', 'site-description' ),
+        ) );
+        add_theme_support("custom-background",
+        [
+            "default-color" => "#fff",
+            "default-image"=> "",
+            "default-repeat" => "no-repeat"
+        ]);
+        //gets rendered on front end with a separate functions
+        add_theme_support("post-thumbnails");
 
-    public function register_scripts(){
-        //register scripts
-        wp_register_script( 'main-js', AQUILA_URI_PATH . '/assets/main.js', array(), filemtime(AQUILA_DIR_PATH.'/assets/main.js'), true );
-        wp_register_script( 'bootstrap-js', AQUILA_URI_PATH.'/assets/src/library/js/bootstrap.min.js',[], filemtime(AQUILA_DIR_PATH.'/assets/src/library/js/bootstrap.min.js'), true );
-    
-    
-        //enquie scripts
-        wp_enqueue_script("main-js");
-        wp_enqueue_script("bootstrap-js");
+        add_theme_support( 'customize-selective-refresh-widgets' );
         
-    }
+        //This feature enables Automatic Feed Links for post and comment in the head. This should be used in place of the deprecated automatic_feed_links() function.
+        add_theme_support( 'automatic-feed-links' );
+        //this switches the default core mark up to output valid html5
+        add_theme_support( 'html5', array( 
+            'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' 
+            ) );
+        
+        //Works for TinyMCE editor only
+        //This function automatically adds another stylesheet with -rtl prefix, e.g. editor-style-rtl.css. 
+        //If that file doesn’t exist, it is removed before adding the stylesheet(s) to TinyMCE
+        add_editor_style( $stylesheet = 'editor-style.css' );
+        
+        add_theme_support( 'wp-block-styles' );
+
+        //add wide-width and full width to the gutenburg components
+        add_theme_support( 'align-wide' );
+        //now set the maximum with for any content added to the post
+        
+        global $content_width;
+        if ( ! isset( $content_width ) ) {
+            $content_width = 1240;
+        }
+
+    }   
+
+
 
 
  }

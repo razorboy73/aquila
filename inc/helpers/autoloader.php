@@ -15,7 +15,7 @@
   */
 
   function autoloader($resource = " "){
-    
+   
     $resouce_path   = false;
     $namespace_root = "AQUILA_THEME\\";
     $resource       = trim($resource, "\\");

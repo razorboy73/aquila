@@ -62,7 +62,7 @@ trait Singleton{
 
             //if any of the plugins want to hook in, include a do action
 
-            do_action( sprintf( 'aquila_theme_singleton_init%s', $called_class ) ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
+            do_action( sprintf( 'aquila_theme_singleton_init_%s', $called_class ) ); // phpcs:ignore WordPress.NamingConventions.ValidHookName.UseUnderscores
 
 
         }
