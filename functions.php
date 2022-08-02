@@ -22,6 +22,7 @@ if(!defined ("AQUILA_URI_PATH")){
 
 
 require_once AQUILA_DIR_PATH . '/inc/helpers/autoloader.php';
+require_once AQUILA_DIR_PATH . '/inc/helpers/template-tags.php';
 
 
 function aquila_get_theme_instance(){
