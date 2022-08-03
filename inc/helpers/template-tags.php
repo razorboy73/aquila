@@ -35,7 +35,13 @@ function get_the_post_custom_thumbnail($post_id, $size = "featured-image", $addi
     return $custom_thumbnail;
 }
 
+/**
+ * Renders custom thumbnail with lazy Load
+ * @param int $post_id      PostID
+ * @param string $size      Registered imag size
+ * @param array $additional_attributes
+ */
 
-function the_post_custom_thumbnail($post_id, $size = "featured-image", $additional_attributes =[]){
+function the_post_custom_thumbnail($post_id, $size = "featured-thumbnail", $additional_attributes =[]){
     echo get_the_post_custom_thumbnail($post_id, $size, $additional_attributes);
 }

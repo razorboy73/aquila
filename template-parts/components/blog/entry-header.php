@@ -7,6 +7,8 @@
  */
 $the_post_id = get_the_ID();
 $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
+$hide_title = get_post_meta($the_post_id, '_hide_page_title', true );
+
  ?>
 
  <header class="entry-header">
@@ -21,9 +23,9 @@ $has_post_thumbnail = get_the_post_thumbnail($the_post_id);
             the_post_custom_thumbnail(
                 //pass in post id
                 $the_post_id,
-                "featured-large",
+                "featured-thumbnail",
                 [
-                    'sizes' => '(max-width: 590px) 590px, 425px',
+                    'sizes' => '(max-width: 416px) 416px, 225px',
                     'class' => 'attachment-featured-large size-featured-image'
                 ]
             )
