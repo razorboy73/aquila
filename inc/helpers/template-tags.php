@@ -89,10 +89,19 @@ function aquila_posted_by(){
 // check if there is an excerpt 
 // if no excerpt, generate one, else use the one that is there
 function aquila_the_excerpt ($trim_character_count = 0){
+
+    $post_ID = get_the_ID();
+
+	if ( empty( $post_ID ) ) {
+		return null;
+	}
+    
     //check if the excerpt has been set or trimmed to zero
     //by default, this will be 55 characters
     if(! has_excerpt() || $trim_character_count === 0 ){
         the_excerpt();//uses get_the_excerpt()
+        //$excerpt = substr($excerpt,0, strrpos($excerpt, " "));
+
         return;
     }
     //if there is an excerpt, render text up until last space

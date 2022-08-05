@@ -28,10 +28,21 @@ if (is_single()){
                     the_title('<span class="">"', '"</span>', false)
         )
     );
+
+    wp_link_pages(
+        [
+            'before' => '<div class="page-links">' .esc_html__('Pages:', 'aquila'),
+            'after' => '</div>',
+            
+        ]
+        );
 }else{
-   aquila_the_excerpt(100);
+   aquila_the_excerpt(45);
+   printf("<br>");
    echo aquila_excerpt_more();
 }
+
+
 
 ?>
 
