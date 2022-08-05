@@ -95,7 +95,7 @@ function aquila_the_excerpt ($trim_character_count = 0){
 	if ( empty( $post_ID ) ) {
 		return null;
 	}
-    
+
     //check if the excerpt has been set or trimmed to zero
     //by default, this will be 55 characters
     if(! has_excerpt() || $trim_character_count === 0 ){
@@ -128,4 +128,34 @@ function aquila_excerpt_more($more = ""){
     }
 
     return $more;
+}
+
+
+function  aquila_pagination(){
+    //will show the next article in loop
+    //wrap pagination in a nav tag
+    //use kses to strip out all but the allowed protocols
+    //pass in the paginate links
+
+    //arguments for paginate links
+    $args = [
+        "before_page_number" => "<span class='btn border border-secondary mr mb-2'> ",
+        "after_page_number" => "</span>",
+    ];
+    //allowed tags
+    $allowed_tags = [
+        "span" => [
+            "class" => []
+        ],
+        "a" => [
+            "class" => [],
+            "href" => [],
+        ]
+        
+    ];
+   printf('<nav class="aquila-pagination clearfix">%s</nav>',
+        wp_kses(paginate_links($args),
+            $allowed_tags)
+);
+
 }

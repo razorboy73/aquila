@@ -46,6 +46,9 @@ get_header("");
         else :
             get_template_part("template-parts/content", "none");
         endif;
+        //pagination function, found in template-tags file
+        aquila_pagination();
+        echo "Please work";
         ?>
     </main>
 </div>

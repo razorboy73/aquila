@@ -74,7 +74,9 @@ get_header("");
             get_template_part("template-parts/content", "none");
 
         endif;
-        
+         //pagination function, found in template-tags file //pagination function, found in template-tags file
+        aquila_pagination();
+      
         ?>
 
     </main>
