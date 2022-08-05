@@ -31,6 +31,7 @@ class AQUILA_THEME {
         Assets::get_instance();
         Menus::get_instance();
         Meta_Boxes::get_instance();
+        Sidebars::get_instance();
         //load other classes
         $this->setup_hooks();
     }
@@ -68,6 +69,8 @@ class AQUILA_THEME {
          */
 
         add_image_size("featured-thumbnail",416, 225, true);
+
+        add_theme_support('widgets');
 
         add_theme_support( 'customize-selective-refresh-widgets' );
         
