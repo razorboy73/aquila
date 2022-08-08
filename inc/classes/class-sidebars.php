@@ -28,6 +28,7 @@ class Sidebars {
         //notice the similarity between the name register_sidebars and the 
         //wordpress class
         add_action('widgets_init', [$this,'register_sidebars']);
+        add_action('widgets_init', [$this, 'register_clock_widget']);
     }
 
    
@@ -55,5 +56,10 @@ class Sidebars {
         ) );
 
     }
+
+    public function register_clock_widget(){
+        //Use Class Name to register widget
+        register_widget('AQUILA_THEME\Inc\Clock_Widget');
+       }
 
 }

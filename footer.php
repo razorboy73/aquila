@@ -5,6 +5,17 @@
  * @package Aquila
  */
 
+ 
+ /* widget process involves:
+ * 1. extending the class
+ * 2. register widget with register_widget(Name of Class )
+ * 3. add_action('widgets_init', function)
+ * 4 make sure there is a widget area called sidebar
+ * 5 Remember the impact of namespaces
+ */
+
+
+
  ?>
 </div>
 
