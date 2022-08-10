@@ -38,7 +38,7 @@ class Assets {
 
     public function register_scripts(){
         //register scripts
-        wp_register_script( 'main-js', AQUILA_URI_PATH . '/assets/main.js', array(), filemtime(AQUILA_DIR_PATH.'/assets/main.js'), true );
+        wp_register_script( 'main-js', AQUILA_BUILD_JS_URI . '/main.js', array(), filemtime(AQUILA_BUILD_JS_DIR_PATH.'/main.js'), true );
         wp_register_script( 'popper', "https://unpkg.com/@popperjs/core@2",[],"", true );
         wp_register_script( 'bootstrap-js', AQUILA_URI_PATH.'/assets/src/library/js/bootstrap.min.js',[], filemtime(AQUILA_DIR_PATH.'/assets/src/library/js/bootstrap.min.js'), true );
     
