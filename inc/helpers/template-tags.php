@@ -82,7 +82,7 @@ function aquila_posted_by(){
     //use the get_the_author_meta() with the ID parameter
     $byline = sprintf(
         esc_html_x('by %s', 'post author', "aquila"),
-        "<span class='author vcard'><a href='" . esc_url(get_author_posts_url(get_the_author_meta("id") ))."'>".esc_html(get_the_author())."</a></span>"
+        "<span class='author vcard'><a href='" . esc_url(get_author_posts_url(get_the_author_meta("ID") ))."'>".esc_html(get_the_author())."</a></span>"
     );
     echo '<span class="byline text-secondary">'.$byline.'</span>';
 }
