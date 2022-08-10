@@ -105,6 +105,19 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("../../src/img/cats.jpg");
 
+/***/ }),
+
+/***/ "./src/sass/main.scss":
+/*!****************************!*\
+  !*** ./src/sass/main.scss ***!
+  \****************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
 /***/ })
 
 /******/ 	});
@@ -185,10 +198,18 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./clock */ "./src/js/clock/index.js");
 /* harmony import */ var _clock__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_clock__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _img_cats_jpg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../img/cats.jpg */ "./src/img/cats.jpg");
+/* harmony import */ var _sass_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../sass/main.scss */ "./src/sass/main.scss");
+/* harmony import */ var _img_cats_jpg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../img/cats.jpg */ "./src/img/cats.jpg");
 //main.js
  //this is the same thing as import './clock/index';
-//
+//styles
+//setting up sass
+//import the sass file into the js file because
+//webpace doesnt understand stylesheets or css
+//loader files convert css in to javascript
+//MiniCssExtractPlugin then extracts the css
+
+ //
 
 
 }();

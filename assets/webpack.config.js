@@ -14,6 +14,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 
 const cssnano = require('cssnano');
@@ -104,8 +105,8 @@ module.exports = (env, argv) => ({
     },
     optimization:{
         minimizer:[
-            new OptimizeCssAssetsPlugin({
-                cssProcessor:cssnano,
+            new CssMinimizerPlugin({
+                //cssProcessor:cssnano,
             })
             ,
             new UglifyJsPlugin({

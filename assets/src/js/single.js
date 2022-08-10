@@ -1,1 +1,2 @@
-//dsljflksdjf;sdlkjf;sldk
+//styles
+import '../sass/single.scss'; 
