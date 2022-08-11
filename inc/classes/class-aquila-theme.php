@@ -81,16 +81,26 @@ class AQUILA_THEME {
             'comment-list', 'comment-form', 'search-form', 'gallery', 'caption', 'style', 'script' 
             ) );
         
-        //Works for TinyMCE editor only
-        //This function automatically adds another stylesheet with -rtl prefix, e.g. editor-style-rtl.css. 
-        //If that file doesn’t exist, it is removed before adding the stylesheet(s) to TinyMCE
-        add_editor_style( $stylesheet = 'editor-style.css' );
+      
         
         add_theme_support( 'wp-block-styles' );
 
         //add wide-width and full width to the gutenburg components
         add_theme_support( 'align-wide' );
         //now set the maximum with for any content added to the post
+
+        //Works for TinyMCE editor only
+        //This function automatically adds another stylesheet with -rtl prefix, e.g. editor-style-rtl.css. 
+        //If that file doesn’t exist, it is removed before adding the stylesheet(s) to TinyMCE
+        /*
+        The parameter $stylesheet is the name of the stylesheet, relative to the theme root. 
+        It also accepts an array of stylesheets. It is optional and defaults to ‘editor-style.css’.
+        This function automatically adds another stylesheet with -rtl prefix, e.g. editor-style-rtl.css.
+        If that file doesn’t exist, it is removed before adding the stylesheet(s) to TinyMCE. If an 
+        array of stylesheets is passed to add_editor_style(), RTL is only added for the first 
+        stylesheet.
+        */
+        add_editor_style('assets/build/css/editor.css' );
         
         global $content_width;
         if ( ! isset( $content_width ) ) {

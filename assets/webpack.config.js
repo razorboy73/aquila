@@ -16,22 +16,21 @@ const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
-
 const cssnano = require('cssnano');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-
-
-
 
 const JS_DIR = path.resolve(__filename, "../src/js");
 // Image directory
 const IMG_DIR = path.resolve(__filename, "../src/img");
+// Library directory
+const LIB_DIR = path.resolve(__filename, "../src/library");
 //Build Directory
 const BUILD_DIR = path.resolve(__filename, "../build");
 
 const entry ={
     main: JS_DIR + '/main.js',
-    single: JS_DIR + '/single.js'
+    single: JS_DIR + '/single.js',
+    editor: JS_DIR +'/editor.js'
 };
 
 //allows entry to take the root of the path defined in context

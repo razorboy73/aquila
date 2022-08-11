@@ -37,7 +37,8 @@ class Assets {
         
         wp_register_style( 'bootstrap-css', AQUILA_URI_PATH.'/assets/src/library/css/bootstrap.min.css',[], [], 'all' );
         wp_register_style( 'main-css', AQUILA_BUILD_CSS_URI . '/main.css', array("bootstrap-css"), filemtime(AQUILA_BUILD_CSS_DIR_PATH.'/main.css'), 'all' );
-        wp_enqueue_style('fonts-css', get_template_directory_uri().'/assets/src/library/fonts/fonts.css',[],false,'all');
+        //because fonts are being included in the build via main.css, we dont need to include here
+        //wp_enqueue_style('fonts-css', get_template_directory_uri().'/assets/src/library/fonts/fonts.css',[],false,'all');
         
         
         //enqueue styles
