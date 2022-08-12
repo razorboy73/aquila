@@ -22,33 +22,58 @@ class Block_Patterns {
         public function register_block_patterns(){
                 if(function_exists('register_block_pattern')){
                     //create the content by copy/past content code
+                    //store content in another template
+                    //buffer but not echo via ob_start
+
+                    /**
+                     * Cover Pattern
+                     */
+                  
+                    $cover_content = $this->get_pattern_content('template-parts/patterns/cover');
                     register_block_pattern( 
                     'aquila/cover', 
                     array(
                         'title'         => __( 'Aquila Cover', 'aquila' ),
                         'description'   => __( 'Aquila Cover Block with image and text', 'Block pattern description', 'aquila' ),
                         'categories'      => ['cover'],
-                        'content'       => '<!-- wp:cover {"url":"http://localhost/debate/wp-content/uploads/2022/08/cover-1.jpg","id":981,"dimRatio":50,"align":"wide"} -->
-                        <div class="wp-block-cover alignwide"><span aria-hidden="true" class="wp-block-cover__gradient-background has-background-dim"></span><img class="wp-block-cover__image-background wp-image-981" alt="" src="http://localhost/debate/wp-content/uploads/2022/08/cover-1.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1} -->
-                        <h1 class="has-text-align-center">Never let your memories be greater than your dreams</h1>
-                        <!-- /wp:heading -->
-                        
-                        <!-- wp:paragraph {"align":"center","textColor":"cyan-bluish-gray"} -->
-                        <p class="has-text-align-center has-cyan-bluish-gray-color has-text-color">A fool who knows he is a fool is not a big fool</p>
-                        <!-- /wp:paragraph -->
-                        
-                        <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-                        <div class="wp-block-buttons"><!-- wp:button {"className":"is-style-outline"} -->
-                        <div class="wp-block-button is-style-outline"><a class="wp-block-button__link">Blogs</a></div>
-                        <!-- /wp:button --></div>
-                        <!-- /wp:buttons --></div></div>
-                        <!-- /wp:cover -->',
+                        'content'       => $cover_content,
                        
+                        'keywords'      => []//  (optional): An array
+                    ) 
+                    );
+                     /**
+                     * 2 column pattern
+                     */
+                  
+                    $two_column_content = $this->get_pattern_content('template-parts/patterns/two-columns');
+                    register_block_pattern( 
+                    'aquila/two-columns', 
+                    array(
+                        'title'         => __( 'Aquila Two Column Pattern', 'aquila' ),
+                        'description'   => __( 'Aquila two columnns with heading and text', 'Block pattern description', 'aquila' ),
+                        'categories'      => ['columns'],
+                        'content'       => $two_column_content,
+            
                         'keywords'      => []//  (optional): An array
                     ) 
                     );
                 }
             }
+            
+        public function get_pattern_content($template_path){
+            /**
+             * Gets content from a specific path
+             * Can be reused for numerus block patterns
+             */
+                ob_start();
+                get_template_part($template_path);
+                $pattern_content = ob_get_contents();
+                ob_end_clean();
+                return $pattern_content;
+
+        }
+        
+        
 
         public function register_block_pattern_categories(){
             
@@ -66,7 +91,7 @@ class Block_Patterns {
                 */
                  $pattern_categories= [
                     'cover' => __('Cover','aquila'),
-                    'carousel' => __('Carousel','aquila')
+                    'columns' => __('Columns','aquila')
                  ];
                  
                  //now check the array - make sure its not empty and is an array
@@ -81,7 +106,8 @@ class Block_Patterns {
                     }
                 }
             }
-        }     
-}
+        }  
+        
+        
 
-
+    }
