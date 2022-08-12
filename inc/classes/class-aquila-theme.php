@@ -102,6 +102,15 @@ class AQUILA_THEME {
         stylesheet.
         */
         add_editor_style('assets/build/css/editor.css' );
+
+        //Remove the core block patterns
+        remove_theme_support("core-block-patterns");
+
+        /**
+         * Sets the maximum allowable width for any content in the them
+         * @see Content Width
+         * @link https://codex.wordpress.org/Content_width
+         */
         
         global $content_width;
         if ( ! isset( $content_width ) ) {
