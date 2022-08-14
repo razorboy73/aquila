@@ -39,13 +39,6 @@ class Blocks{
                         ]
                     );
                 
-
-               
-
-                echo "<pre>";
-                print_r($results);
-                print_r($category_slugs);
-                wp_die();
                 }
                 
 }
