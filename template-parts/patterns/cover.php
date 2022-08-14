@@ -7,8 +7,8 @@
 
  ?>
 
- <!-- wp:cover {"url":"<?php echo untrailingslashit(esc_url(AQUILA_BUILD_IMG_URI.'/patterns/cover-1.jpg/')) ?>","id":981,"dimRatio":50,"minHeight":640,"align":"full"} -->
-<div class="wp-block-cover alignfull" style="min-height:640px"><span aria-hidden="true" class="wp-block-cover__gradient-background has-background-dim"></span><img class="wp-block-cover__image-background wp-image-981" alt="" src="<?php echo untrailingslashit(esc_url(AQUILA_BUILD_IMG_URI.'/patterns/cover-1.jpg/'))?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1} -->
+ <!-- wp:cover {"url":"<?php echo (esc_url(AQUILA_BUILD_IMG_URI.'/patterns/cover-1.jpg')) ?>","id":981,"dimRatio":50,"minHeight":640,"align":"full"} -->
+<div class="wp-block-cover alignfull" style="min-height:640px"><span aria-hidden="true" class="wp-block-cover__gradient-background has-background-dim"></span><img class="wp-block-cover__image-background wp-image-981" alt="" src="<?php echo (esc_url(AQUILA_BUILD_IMG_URI.'/patterns/cover-1.jpg'))?>" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:heading {"textAlign":"center","level":1} -->
 <h1 class="has-text-align-center">Never let your memories be greater than your dreams</h1>
 <!-- /wp:heading -->
 

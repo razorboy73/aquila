@@ -19,6 +19,20 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const cssnano = require('cssnano');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
+//Externalize dependencies that are available as script dependencies on modern 
+//WordPress sites.  Add an asset file for each entry point that declares an object 
+//with the list of WordPress script dependencies for the entry point. The asset file 
+//also contains the current version calculated for the current source code.
+//This allows JavaScript bundles produced by webpack to leverage WordPress style 
+//dependency sharing without an error-prone process of manually maintaining a 
+//dependency list.
+
+const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+
+
+
+
+//Paths
 const JS_DIR = path.resolve(__filename, "../src/js");
 // Image directory
 const IMG_DIR = path.resolve(__filename, "../src/img");
@@ -27,10 +41,12 @@ const LIB_DIR = path.resolve(__filename, "../src/library");
 //Build Directory
 const BUILD_DIR = path.resolve(__filename, "../build");
 
+
 const entry ={
     main: JS_DIR + '/main.js',
     single: JS_DIR + '/single.js',
-    editor: JS_DIR +'/editor.js'
+    editor: JS_DIR +'/editor.js',
+    blocks: JS_DIR +'/blocks.js'
 };
 
 //allows entry to take the root of the path defined in context
@@ -90,7 +106,21 @@ const plugins = (argv) => [
     new MiniCssExtractPlugin({
         //extract it to the file below
         filename: 'css/[name].css'
-    })
+    }),
+    new DependencyExtractionWebpackPlugin(
+        { 
+        injectPolyfill: true,
+        /*
+        combineAssets
+            Type: boolean Default: false
+            By default, one asset file is created for each entry point. When this flag is set to 
+            true, all information about assets is combined into a single assets.(json|php) 
+            file generated in the output directory.
+        */
+        combineAssets:true 
+        }
+    )
+    
     
 ];
 

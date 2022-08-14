@@ -8,19 +8,26 @@
 
 //Define a constant for the file directory
 //get the path until the root of the theme
-
+//get_template_directory() returns the absolute template path directory of the theme. 
+//It generates the hosting directory of the template.
 if(!defined ("AQUILA_DIR_PATH")){
     define("AQUILA_DIR_PATH", untrailingslashit(get_template_directory()));
 
 }
 
+//get_template_directory_uri(): retrieves the full URI of the template directory. You can
+//use it to print the URL of the template directory - stylesheets/scripts 
+//It retrieves the full URI including the http://
+
 if(!defined ("AQUILA_URI_PATH")){
     define("AQUILA_URI_PATH", untrailingslashit(get_template_directory_uri()));
-
 }
 
 if(!defined ("AQUILA_BUILD_URI")){
     define("AQUILA_BUILD_URI", untrailingslashit(get_template_directory_uri().'/assets/build'));
+}
+if(!defined ("AQUILA_BUILD_PATH")){
+    define("AQUILA_BUILD_PATH", untrailingslashit(get_template_directory().'/assets/build'));
 
 }
 
