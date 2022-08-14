@@ -89,6 +89,7 @@ class Assets {
     
         //theme gutenberg block js
         //Determine if current request is for an administrative interface page.
+        //checking for this means you will not render js on the front end
         if(is_admin()){
         // this will be the javascript file
         //print off the script

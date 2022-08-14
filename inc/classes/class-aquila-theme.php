@@ -33,6 +33,7 @@ class AQUILA_THEME {
         Meta_Boxes::get_instance();
         Sidebars::get_instance();
         Block_Patterns::get_instance();
+        Blocks::get_instance();
         //load other classes
         $this->setup_hooks();
     }
@@ -90,6 +91,14 @@ class AQUILA_THEME {
         add_theme_support( 'align-wide' );
         //now set the maximum with for any content added to the post
 
+        /**
+        * Loads the editor styles in the Gutenberg editor
+        * Editor Styles allows you to privde the CSS used by the wordpress visual editor so that it can match
+        * the front end styles
+        * otherwise tiny MCE gets added
+        */
+
+        add_theme_support('editor-styles');
         //Works for TinyMCE editor only
         //This function automatically adds another stylesheet with -rtl prefix, e.g. editor-style-rtl.css. 
         //If that file doesn’t exist, it is removed before adding the stylesheet(s) to TinyMCE
