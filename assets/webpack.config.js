@@ -29,9 +29,6 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 
-
-
-
 //Paths
 const JS_DIR = path.resolve(__filename, "../src/js");
 // Image directory
@@ -40,7 +37,6 @@ const IMG_DIR = path.resolve(__filename, "../src/img");
 const LIB_DIR = path.resolve(__filename, "../src/library");
 //Build Directory
 const BUILD_DIR = path.resolve(__filename, "../build");
-
 
 const entry ={
     main: JS_DIR + '/main.js',
