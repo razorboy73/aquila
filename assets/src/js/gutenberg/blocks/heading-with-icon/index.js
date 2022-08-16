@@ -1,7 +1,10 @@
 import {registerBlockType} from '@wordpress/blocks';
 import {__} from '@wordpress/i18n';
-import { RichText} from '@wordpress/block-editor'
+import { RichText, InspectorControls} from '@wordpress/block-editor'
+import{PanelBody, RadioControl} from '@wordpress/components'
+
 import Edit from './edit';
+import{getIconComponent} from './icons-map';
 
 // Register the block
 registerBlockType( 'aquila-blocks/heading', {
@@ -23,12 +26,13 @@ registerBlockType( 'aquila-blocks/heading', {
     },
 
     edit: Edit,
-    save({attributes: {content}}) {
-        console.warn('save', content);
+    save({attributes: {option, content}}) {
+        const HeadingIcon = getIconComponent(option);
         return (
             <div className="aquila-icon-heading">
                 <span className="aquila-icon-heading__heading"/>
-            <RichText.Content tag="h4" value={content}/>
+                <HeadingIcon/>
+            <RichText.Content tagName="h4" value={content}/>
             </div>
         )
     },
