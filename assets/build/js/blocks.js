@@ -53,13 +53,19 @@ var register = function register() {
     return (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockStyle)('core/button', layoutStyle);
   });
 };
+
+var deRegister = function deRegister() {
+  (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.unregisterBlockStyle)("core/quote", "large");
+  (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.unregisterBlockStyle)("core/button", "outline");
+};
 /**
- * register style on dom ready
+ * register/deregoster style on dom ready
  */
 
 
 wp.domReady(function () {
   register();
+  deRegister();
 });
 
 /***/ }),

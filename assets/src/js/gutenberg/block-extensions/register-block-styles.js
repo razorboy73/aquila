@@ -3,7 +3,7 @@
 */
 
 
-import {registerBlockStyle} from '@wordpress/blocks';
+import {registerBlockStyle, unregisterBlockStyle} from '@wordpress/blocks';
 import {__} from '@wordpress/i18n';
 
 
@@ -55,10 +55,18 @@ const register = () => {
     ))
 }
 
+const deRegister = () =>{
+    unregisterBlockStyle("core/quote","large");
+    unregisterBlockStyle("core/button","outline")
+}
+
+
+
 /**
- * register style on dom ready
+ * register/deregoster style on dom ready
  */
 
 wp.domReady( () =>{
     register();
+    deRegister();
 })
