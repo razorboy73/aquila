@@ -8,8 +8,9 @@
     "prod": "cross-env NODE_ENV=production webpack --mode production --progress",
     "dev": "cross-env NODE_ENV=development webpack --watch --mode development --progress",
     "clean": "rm -rf build/*",
-    "svg": "svgr --out-dir src/js/icons/ src/icons"
-
+    "svg": "svgr --out-dir src/js/icons/ src/icons",
+    "lint": "eslint src/js/*",
+    "lint:fix": "eslint --fix src/js/*"
   },
   "keywords": [
     "Wordpress",
@@ -44,6 +45,9 @@
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.0.0",
     "cssnano": "^5.1.12",
+    "eslint": "^8.22.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-jsdoc": "^39.3.6",
     "file-loader": "^6.2.0",
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.1",

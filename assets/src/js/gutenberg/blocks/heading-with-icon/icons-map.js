@@ -11,5 +11,5 @@ export const getIconComponent = (option) => {
   //check the option is not missing and is in the icon map, if nothing there, return dos as default
   return !isEmpty(option) && option in IconsMap
     ? IconsMap[option]
-    : IconsMap["dos"];
+    : IconsMap.dos;
 };

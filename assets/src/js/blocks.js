@@ -1,4 +1,7 @@
 
 import '../sass/blocks.scss';
 
-import './gutenberg/blocks/heading-with-icon/index'
+
+//blocks
+import './gutenberg/blocks/heading-with-icon/index';
+import './gutenberg/blocks/dos-and-donts';

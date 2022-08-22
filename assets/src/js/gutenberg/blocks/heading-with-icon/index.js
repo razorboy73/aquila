@@ -13,7 +13,7 @@ registerBlockType( 'aquila-blocks/heading', {
     icon: 'admin-customizer',
     category:'aquila',
     attributes:{
-        options:{
+        option:{
             type: 'string',
             default: 'dos'
         },

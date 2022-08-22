@@ -11,6 +11,13 @@ const Edit = ({className,attributes, setAttributes}) => {
     const HeadingIcon = getIconComponent(option);
     console.warn('options and component', option, HeadingIcon);
 
+//Block design
+//Two parents - Dos and Donts
+//group block
+//column blocks
+//headings
+//list blocks
+
 
 
     return (
@@ -35,8 +42,8 @@ const Edit = ({className,attributes, setAttributes}) => {
                     help="Controls icon selection"
                     selected={ option }
                     options={ [
-                        { label: __('Do\'s', 'aquila'), value: 'dos' },
-                        { label: __('Don\'ts', 'aquila'), value: 'donts' },
+                        { label: __('Dos', 'aquila'), value: 'dos' },
+                        { label: __("Dont's", 'aquila'), value: 'donts' },
                     ] }
                     onChange={ ( option ) => { setAttributes({option}) } }
                 />
