@@ -4,6 +4,9 @@ import './clock';
 //this is the same thing as import './clock/index';
 
 
+import './carousel';
+
+
 //styles
 //setting up sass
 //import the sass file into the js file because

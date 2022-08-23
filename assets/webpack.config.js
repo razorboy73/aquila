@@ -19,6 +19,7 @@ const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 const cssnano = require("cssnano");
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const CopyPlugin = require('copy-webpack-plugin'); // https://webpack.js.org/plugins/copy-webpack-plugin/
 
 //Externalize dependencies that are available as script dependencies on modern
 //WordPress sites.  Add an asset file for each entry point that declares an object
@@ -100,6 +101,11 @@ const plugins = (argv) => [
     //extract it to the file below
     filename: "css/[name].css",
   }),
+  new CopyPlugin( {
+		patterns: [
+			{ from: LIB_DIR, to: BUILD_DIR + '/library' }
+		]
+	} ),
   new DependencyExtractionWebpackPlugin({
     injectPolyfill: true,
     /*
