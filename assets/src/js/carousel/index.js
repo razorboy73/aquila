@@ -7,7 +7,7 @@
         initiateCarousel(){
             console.log("Fuck");
             $('.posts-carousel').slick({
-             
+                autoplay: true,
                 infinite: true,
                 slidesToShow: 1,
                 slidesToScroll: 1

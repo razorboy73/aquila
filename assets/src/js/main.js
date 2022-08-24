@@ -22,3 +22,4 @@ import '../sass/main.scss';
 import "../img/cats.jpg";
 import '../img/patterns/cover-1.jpg';
 
+ 
