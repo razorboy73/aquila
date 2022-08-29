@@ -69,7 +69,15 @@ class Assets
         wp_enqueue_script("main-js");
         wp_enqueue_script("bootstrap-js");
         wp_enqueue_script("slick-js");
+
+        //this makes the siteConfig object available to the main-js file
+        wp_localize_script('app', 'siteConfig', [
+            'ajaxURL' => admin_url('admin-ajax.php'), //uses the admin_url function - https://developer.wordpress.org/reference/functions/admin_url/
+            'ajax_nonce' => wp_create_nonce('loadmore_post_nonce')
+        ]);
     }
+
+
 
     public function enqueue_editor_assets()
     {

@@ -2,9 +2,8 @@
 
 import './clock';
 //this is the same thing as import './clock/index';
-
-
 import './carousel';
+import './posts/loadmore';
 
 
 //styles
