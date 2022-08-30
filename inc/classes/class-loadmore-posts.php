@@ -57,6 +57,7 @@ class Loadmore_Posts
          */
 
         $page_no = get_query_var('paged') ? get_query_var('paged') : 1;
+        //$_POST
         $page_no = !empty($_POST['page']) ? filter_var($_POST['page'], FILTER_VALIDATE_INT) + 1 : $page_no;
 
         //
