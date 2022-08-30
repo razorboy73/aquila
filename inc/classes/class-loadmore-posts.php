@@ -88,7 +88,7 @@ class Loadmore_Posts
             endif;
         else :
             //Return response as a zero, when no post found
-            wp_die('0');
+            wp_die();
         endif;
 
         wp_reset_postdata();
