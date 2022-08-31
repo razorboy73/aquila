@@ -11,6 +11,9 @@
             this.ajaxNonce = siteConfig?.ajax_nonce ?? '';
             //catch the load more buttong
             this.loadMoreBtn = $('#load-more');
+            //add pagination for google
+            this.loadingTextEl = $('#loading-text');
+            this.isRequestProcessing = false;
             
             //options for the intersection observer
             this.options = {
@@ -30,7 +33,7 @@
             }
 
 
-
+            this.totalPagesCount = $( "post-pagination").data('max-pages');
 
             /**
              * Add the interesectionobserver api and listen to the load more intersection status
@@ -77,10 +80,13 @@
         //pass in the ajaxNonce
         // get the page number from the load more button the "data-page" element
             const page = this.loadMoreBtn.data('page');
-            if(!page){
+            //if page is false or a request is processing
+            if(!page ||this.isRequestProcessing){
                 return null;
             }
-            const newPage = parseInt(page) +1;// increment page count by one
+            const nextPage = parseInt(page) +1;// increment page count by one
+            this.isRequestProcessing = true;
+
 
             $.ajax({
                 //this data is available in $_Post
@@ -94,21 +100,40 @@
                 success: (response) =>{
                     //response is zero if no more posts are available
                     //remove element
-                    if(0 === parseInt(response)){
-                        this.loadMoreBtn.remove();
+                    this.loadMoreBtn.data('page',nextPage);
+                    $('#load-more-content').append(response);
+                    //remove the button on last page so we cant make another request
+                    this.removeLoadMoreIfOnLastPage(nextPage);
+                    this.isRequestProcessing = false;
+                    // if(0 === parseInt(response)){
+                    //     this.loadMoreBtn.remove();
                 
-                    }else{
-                        //this modifies the data page by one, so the 
-                        //we already have the number of the next page available
-                        this.loadMoreBtn.data('page', newPage);
-                        $('#load-more-content').append(response);
-                    }
+                    // }else{
+                    //     //this modifies the data page by one, so the 
+                    //     //we already have the number of the next page available
+                    //     this.loadMoreBtn.data('page', newPage);
+                    //     $('#load-more-content').append(response);
+                    
                 },
             error:(response) => {
-                //console.log(response)
+                console.log(response);
+                //prevent sending another request if the previous request is in place
+                this.isRequestProcessing = false;
             },
-            });
-            }
+        });
+        }
+
+        /**
+		 * Remove Load more Button If on last page.
+		 *
+		 * @param {int} nextPage New Page.
+		 */
+		removeLoadMoreIfOnLastPage( nextPage ) {
+            //if we exceed total page count, remove button
+			if ( nextPage + 1 > this.totalPagesCount ) {
+				this.loadMoreBtn.remove();
+			}
+        }
     }
 new LoadMore();
 })(jQuery);

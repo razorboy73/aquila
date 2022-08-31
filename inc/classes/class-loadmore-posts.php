@@ -25,6 +25,15 @@ class Loadmore_Posts
         //remember to use public functions
         add_action('wp_ajax_nopriv_load_more', [$this, 'ajax_script_post_load_more']);
         add_action('wp_ajax_load_more', [$this, 'ajax_script_post_load_more']);
+
+
+        /**
+         * Create a short code
+         * 
+         * Usage echo do_shortcode('[post_listings');
+         */
+
+        add_shortcode('post_listings', [$this, 'post_script_load_more']);
     }
 
 
