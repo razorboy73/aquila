@@ -62,6 +62,8 @@ class Assets
         //register scripts
         wp_register_script('slick-js', AQUILA_BUILD_LIB_URI . '/js/slick.min.js', ['jquery'], false, true);
         wp_register_script('main-js', AQUILA_BUILD_JS_URI . '/main.js', ['jquery', 'slick-js'], filemtime(AQUILA_BUILD_JS_DIR_PATH . '/main.js'), true);
+        wp_register_script('single-js', AQUILA_BUILD_JS_URI . '/single.js', ['jquery', 'slick-js'], filemtime(AQUILA_BUILD_JS_DIR_PATH . '/single.js'), true);
+
         wp_register_script('bootstrap-js', AQUILA_BUILD_LIB_URI . '/js//bootstrap.min.js', [], filemtime(AQUILA_DIR_PATH . '/assets/src/library/js/bootstrap.min.js'), true);
 
 
@@ -69,6 +71,12 @@ class Assets
         wp_enqueue_script("main-js");
         wp_enqueue_script("bootstrap-js");
         wp_enqueue_script("slick-js");
+
+        //to enqueue on a single post
+        if (is_single()) {
+
+            wp_enqueue_script("single-js");
+        }
 
         //this makes the siteConfig object - object is second paramater,
         // available to the main-js file
