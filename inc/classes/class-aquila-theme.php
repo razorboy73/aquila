@@ -8,6 +8,7 @@
 
 namespace AQUILA_THEME\Inc;
 
+
 use AQUILA_THEME\Inc\Traits\Singleton;
 
 class AQUILA_THEME
@@ -36,6 +37,7 @@ class AQUILA_THEME
         Block_Patterns::get_instance();
         Blocks::get_instance();
         Loadmore_Posts::get_instance();
+        Loadmore_Single::get_instance();
         //load other classes
         $this->setup_hooks();
     }

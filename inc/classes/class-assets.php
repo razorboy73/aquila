@@ -74,7 +74,6 @@ class Assets
 
         //to enqueue on a single post
         if (is_single()) {
-
             wp_enqueue_script("single-js");
         }
 
