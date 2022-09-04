@@ -35,6 +35,15 @@ class Loadmore_Single
                  * the single_post_load_more_container
                  */
                 add_shortcode('single_post_listings', [$this, 'single_post_load_more_container']);
+
+                /**
+                 * Modify the query to start the wordpress loop from after
+                 * the current single post id
+                 * Filters the WHERE clause of the query.
+                 * https://developer.wordpress.org/reference/hooks/posts_where/
+                 */
+
+                add_filter('posts_where', [$this, 'posts_where'], 10, 2);
         }
 
         public function ajax_script_single_post_load_more($initial_request = false)
@@ -91,6 +100,8 @@ class Loadmore_Single
                 }
         }
 
+
+
         public function single_post_load_more_container()
         {
                 //find out the post ID
@@ -145,10 +156,39 @@ class Loadmore_Single
                         'post_status' => 'publish',
                         'posts_per_page' => 1, //this is number of posts returned
                         'paged' =>  $page_no, //number of page. Show the posts that would normally show up just on page X when using the “Older Entries” link.
+                        //this is a custom key
                         'starting_post_id' => intval($single_post_id) //start query from next available post.  This is a custom parameter
 
                 ];
 
+                // echo "<pre/>";
+                // $my_query = new WP_Query($args);
+                // print_r($my_query->request);
                 return new WP_Query($args);
+        }
+
+        /**
+         * Checks the custom query param called "starting_post_id from the query
+         * in `ajax_script_single_post_load_more()` function which relies on get_single_load_more_query
+         * if this parameter existins in teh query,
+         * we modify the where clause to get only post ids that are less than the starting_post_id
+         * which is the current single post id
+         * 'starting_post_id' => intval($single_post_id)
+         * 
+         */
+
+        function posts_where($where, $query)
+        {
+                global $wpdb;
+                //find the custom parameter
+                $start = $query->get('starting_post_id');
+                //if the query doesnt not have custom param, return defult where clause
+                if (empty($start)) {
+                        return $where;
+                }
+                //modify the where clause by adding posts with ID less than the starting ID
+                $where .= " AND {$wpdb->posts}.ID < $start";
+
+                return $where;
         }
 }
