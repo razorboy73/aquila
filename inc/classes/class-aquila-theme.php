@@ -40,6 +40,7 @@ class AQUILA_THEME
         Loadmore_Single::get_instance();
         Register_Post_Types::get_instance();
         Register_Taxonomies::get_instance();
+        Archives_Settings::get_instance();
 
         //load other classes
         $this->setup_hooks();

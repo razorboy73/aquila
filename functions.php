@@ -55,6 +55,9 @@ if (!defined('AQUILA_BUILD_LIB_URI')) {
 }
 
 
+if (!defined('AQUILA_ARCHIVE_POST_PER_PAGE')) {
+    define('AQUILA_ARCHIVE_POST_PER_PAGE', 9);
+}
 
 require_once AQUILA_DIR_PATH . '/inc/helpers/autoloader.php';
 require_once AQUILA_DIR_PATH . '/inc/helpers/template-tags.php';
