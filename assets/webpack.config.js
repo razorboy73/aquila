@@ -45,6 +45,7 @@ const entry = {
   single: JS_DIR + "/single.js",
   editor: JS_DIR + "/editor.js",
   blocks: JS_DIR + "/blocks.js",
+  author: JS_DIR + "/author.js"
 };
 
 //allows entry to take the root of the path defined in context

@@ -8,26 +8,32 @@
 
 //availble because we are working inside of author template
 $author_email = get_the_author_meta('user_mail');
-
-// $has_avatar = aquila_has_gravatar($author_email);
+// echo "author_email";
+// echo "<br>";
+// print_r($author_email);
+$has_avatar = aquila_has_gravatar($author_email);
+// echo "<br>";
+// echo "has avatar";
+// echo "<br>";
+// print_r($has_avatar);
 // https://developer.wordpress.org/reference/functions/get_avatar/
 $avatar = get_avatar($author_email, 240, '', '',  ['class'   => 'rounded-circle', 'default' => '404']);
-
+// print_r($avatar);
 ?>
 <header class="page-header row mb-4">
     <!--author-col-one-->
     <div class="author-col-one mb-3 col-lg-3 col-md-3 col-sm-12">
         <div id="author-avatar" class="author-avatar d-flex align-items-start">
             <?php
-            if (!empty($avatar)) {
-                echo wp_kses_post($avatar);
-            } else {
-                printf(
-                    '<span id="author-firstname" class="d-none">%1$s</span><span id="author-lastname" class="d-none">%2$s</span><div id="author-profile-img" style="width: 230px; height: 230px;" class="rounded-circle bg-secondary position-relative"><span class="h1 text-white inset-center"></span></div>',
-                    esc_html(get_the_author_meta('first_name')),
-                    esc_html(get_the_author_meta('last_name'))
-                );
-            }
+            // if (!empty($has_avatar)) {
+            //     echo wp_kses_post($avatar);
+            // } else {
+            printf(
+                '<span id="author-firstname" class="d-none">%1$s</span><span id="author-lastname" class="d-none">%2$s</span><div id="author-profile-img" style="width: 230px; height: 230px;" class="rounded-circle bg-secondary position-relative"><span class="h1 text-white inset-center"></span></div>',
+                esc_html(get_the_author_meta('first_name')),
+                esc_html(get_the_author_meta('last_name'))
+            );
+            // }
             ?>
         </div><!-- #author-avatar -->
     </div>

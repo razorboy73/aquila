@@ -170,3 +170,54 @@ function  aquila_pagination()
         )
     );
 }
+
+/**
+ * 
+ */
+
+function aquila_is_uploaded_via_wp_admin($gravatar_url)
+{
+    $parsed_url = wp_parse_url($gravatar_url);
+    // echo "<pre>";
+    // echo "<br>";
+    // echo "gravatar parse";
+    // print_r($parsed_url);
+
+    $query_args = !empty($parsed_url['query']) ? $parsed_url['query'] : '';
+    //if the query is empty, it means user has uploaded gravatar
+    return empty($query_args);
+}
+
+/**
+ * if the gravatar is uploaded, returns true
+ */
+function aquila_has_gravatar($user_email)
+{
+    $gravatar_url = get_avatar_url($user_email);
+
+    // echo "<pre>";
+    // echo "<br>";
+    // echo "first Gravatar url";
+    // print_r($gravatar_url);
+
+    if (aquila_is_uploaded_via_wp_admin($gravatar_url)) {
+        return true;
+    }
+
+    $gravatar_url = sprintf('%s&d=404', $gravatar_url);
+    // echo "<pre>";
+    // echo "<br>";
+    // echo "Second Gravatar url";
+    // print_r($gravatar_url);
+
+    //make a request to $gravatar_url and get the header
+    $headers = @get_headers($gravatar_url);
+    // echo "<pre>";
+    // echo "<br>";
+    // echo "Header";
+    // print_r($headers);
+
+    //if the status is 200, it means the users has uploaded an avatar on gravatar
+
+    return preg_match("|200|", $headers[0]);
+}
